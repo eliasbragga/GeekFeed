@@ -1,0 +1,25 @@
+:root {
+    --primary: #00ff9d;
+    --secondary: #00b4ff;
+    --dark: #121212;
+    --darker: #0a0a0a;
+    --light: #e0e0e0;
+    --gray: #333;
+    --light-gray: #444;
+    --danger: #ff3e3e;
+    --success: #00ff9d;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Source Code Pro', monospace;
+    background-color: var(--dark);
+    color: var(--light);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
