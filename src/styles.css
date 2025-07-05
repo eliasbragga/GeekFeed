@@ -23,28 +23,3 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
 }
-
-.main {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    background-color: #00ff9d;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-}
-
-.main-card {
-    background-color: #ff3e3e;
-    display: flex;
-    flex-direction: column;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    gap: 10px;
-}
-
-.card {
-    background-color: blueviolet;
-}
