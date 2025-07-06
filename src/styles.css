@@ -133,6 +133,57 @@ header {
 }
 
 .cards:hover {
-  transform: translateX(4px);
-  box-shadow: -5px 0 4px -3px #00ff9d;
+    transform: translateX(4px);
+    box-shadow: -5px 0 4px -3px #00ff9d;
+}
+
+.large-font {
+    display: flex;
+    align-items: center;
+    font-size: x-large;
+}
+
+.top-20 {
+    position: relative;
+}
+
+.btn-like-comment {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+ion-icon.active {
+    animation: like 0.5s 1;
+    fill: var(--danger);
+}
+
+ion-icon {
+    fill: var(--light);
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+ion-icon:hover {
+    fill: var(--primary);
+}
+
+ion-icon.active:hover {
+    animation: like 0.5s 1;
+    fill: var(--danger);
+}
+
+@keyframes like {
+    0% {
+        transform: scale(1);
+    }
+
+    90% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1.1);
+    }
 }
