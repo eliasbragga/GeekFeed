@@ -23,3 +23,46 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
 }
+
+.container_cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cards {
+    background-color: var(--darker);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 25px 25px;
+    border-radius: 10px;
+    width: 700px;
+    gap: 7px;
+    border-left: 3px solid #00ff9d;
+    transition: all 0.5s ease;
+}
+
+.cards h2 {
+    text-align: left;
+    width: 100%;
+    font-family: 'Source Code Pro', monospace;
+    color: #00ff9d;
+}
+
+.cards p:nth-child(2) {
+    text-align: left;
+    width: 100%;
+    color: #00b4ff;
+}
+
+.cards p:nth-child(3) {
+    text-align: left;
+    width: 100%;
+}
+
+.cards:hover {
+  transform: translateX(4px);
+  box-shadow: -5px 0 4px -3px #00ff9d;
+}
