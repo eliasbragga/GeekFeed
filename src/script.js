@@ -51,7 +51,7 @@ async function popularLista() {
 
 }
 
-popularLista()
+// popularLista()
 
 function clickHeart(icon) {
     icon.addEventListener('click', () => {
