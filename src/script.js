@@ -57,7 +57,7 @@ async function buscar() {
 }
 async function popularLista() {
     const listas = await buscar()
-    listas.forEach(lista => (createCard(lista.title, lista.author, lista.content, lista.likes ?? "0", lista.id, lista.commentCount ?? "0")))
+    listas.forEach(lista => (createCard(lista.title, lista.author, lista.content, lista.likes ?? 0, lista.id, lista.commentCount ?? 0)))
 }
 
 popularLista()
