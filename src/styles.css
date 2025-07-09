@@ -187,23 +187,46 @@ ion-icon.active:hover {
     }
 }
 
+.modal-effect {
+    background-color: hsla(0, 0%, 0%, 0.587);
+    width: 100%;
+    height: 100%;
+    z-index: 101;
+    position: fixed;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    display: none;
+}
+
 .post-modal {
     background-color: var(--dark);
     position: absolute;
     display: flex;
     flex-direction: column;
-    /* align-items: center;
-    justify-content: center; */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 25px;
     border-radius: 10px;
-    box-shadow: rgba(0, 255, 157, 0.2) 0px 0px 20px; 
+    box-shadow: rgba(0, 255, 157, 0.2) 0px 0px 20px;
+    border: 1px solid var(--light-gray);
     width: 575px;
     height: 725px;
     gap: 20px;
-    /* z-index: 101; */
+    z-index: 101;
+}
+
+.header-modal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-modal span {
+    cursor: pointer;
+    user-select: none;
 }
 
 .post-modal h2 {
@@ -236,7 +259,6 @@ ion-icon.active:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: center; */
     scrollbar-width: none;
     gap: 10px;
 }
@@ -260,7 +282,6 @@ ion-icon.active:hover {
 #comment-card p {
     color: var(--light);
 }
-
 
 #original-post p:nth-child(2) {
     color: var(--secondary);
