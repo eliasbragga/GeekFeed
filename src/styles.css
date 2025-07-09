@@ -36,12 +36,16 @@ header {
 }
 
 .logo {
-    background:linear-gradient(to right var(--primary), var(--secondary));
-    padding: 0; /* ⚠️ Alerta de Over-engineered. Verificar se realmente precisa tirar esse padding */
-    margin: 0; /* ⚠️  Alerta de Over-engineered. Verificar se realmente precisa tirar esse margin */
-    padding-right: auto;  /* ⚠️  Alerta de Over-engineered. Esse padding nao tá causando efeito nenhum. todo texto inicia da esquerda para direita */
+    background: linear-gradient(to right var(--primary), var(--secondary));
+    padding: 0;
+    /* ⚠️ Alerta de Over-engineered. Verificar se realmente precisa tirar esse padding */
+    margin: 0;
+    /* ⚠️  Alerta de Over-engineered. Verificar se realmente precisa tirar esse margin */
+    padding-right: auto;
+    /* ⚠️  Alerta de Over-engineered. Esse padding nao tá causando efeito nenhum. todo texto inicia da esquerda para direita */
     color: var(--primary);
-    text-align: left;  /* ⚠️Alerta de Over-engineered.  Este codigo é redundante já que por default todo text-align é left, ja que nao centraliza ele ou empurra */
+    text-align: left;
+    /* ⚠️Alerta de Over-engineered.  Este codigo é redundante já que por default todo text-align é left, ja que nao centraliza ele ou empurra */
 
 
 }
@@ -94,36 +98,43 @@ header {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 25px 25px 25px;  /* Ajustar trecho do codigo. O padding tem 4 propriedades top right bottom left, dessa forma, além de, talvez nao funcionar como esperado, causa confusão na leitura */
+    padding: 25px 25px 25px;
+    /* Ajustar trecho do codigo. O padding tem 4 propriedades top right bottom left, dessa forma, além de, talvez nao funcionar como esperado, causa confusão na leitura */
     border-radius: 10px;
     width: 700px;
     gap: 7px;
-    border-left: 3px solid #00ff9d; /* TODO utilizar variavel de cor ja existente */
+    border-left: 3px solid #00ff9d;
+    /* TODO utilizar variavel de cor ja existente */
     transition: all 0.5s ease;
 }
+
 .linha {
     height: 2px;
     width: 100%;
     max-width: 700px;
     margin: 10px 30px;
-    background: linear-gradient(); /* TODO esse codigo nao tem efeito */
+    background: linear-gradient();
+    /* TODO esse codigo nao tem efeito */
     border-radius: 10px;
-    box-shadow:  /* TODO ajustar para a mesma linha */
-    0 0 5px var(--light)
-  
+    box-shadow:
+        /* TODO ajustar para a mesma linha */
+        0 0 5px var(--light)
 }
 
 .cards h2 {
     text-align: left;
     width: 100%;
-    font-family: 'Source Code Pro', monospace; /* TODO essa fonte ja está declarada no body */
-    color: #00ff9d; /* TODO utilizar variavel de cor ja existente */
+    font-family: 'Source Code Pro', monospace;
+    /* TODO essa fonte ja está declarada no body */
+    color: #00ff9d;
+    /* TODO utilizar variavel de cor ja existente */
 }
 
 .cards p:nth-child(2) {
     text-align: left;
     width: 100%;
-    color: #00b4ff; /* TODO utilizar variavel de cor ja existente */
+    color: #00b4ff;
+    /* TODO utilizar variavel de cor ja existente */
 }
 
 .cards p:nth-child(3) {
@@ -132,14 +143,21 @@ header {
 }
 
 .cards:hover {
-  transform: translateX(4px);
-  box-shadow: -5px 0 4px -3px #00ff9d; /* TODO utilizar variavel de cor ja existente */
+    transform: translateX(4px);
+    box-shadow: -5px 0 4px -3px #00ff9d;
+    /* TODO utilizar variavel de cor ja existente */
 }
 
 .large-font {
     display: flex;
     align-items: center;
     font-size: x-large;
+}
+
+.large-icon {
+    display: flex;
+    align-items: center;
+    font-size: large;
 }
 
 .top-20 {
@@ -150,7 +168,7 @@ header {
     width: 100%;
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
 }
 
 ion-icon.active {
