@@ -1,3 +1,6 @@
+const btnSendComment = document.querySelector(".btn-send-comment")
+let idUser = ""
+
 function createCard(title, username, content, likes, id, comments) {
 
     const cards = document.querySelector(".container_cards")
@@ -16,9 +19,8 @@ function createCard(title, username, content, likes, id, comments) {
     divCard.classList.add("cards")
     divButtonLikeComment.classList.add("btn-like-comment")
 
-    // aqui ja está sendo utilizado o padrao classList.add(). continuar seguindo o padrão ao inves de usar o className
-    divLike.className = 'large-font top-20'
-    divComment.className = 'large-icon top-20'
+    divLike.classList.add("large-font", "top-20")
+    divComment.classList.add("large-icon", "top-20")
 
     icon.setAttribute("name", "heart")
     iconComment.setAttribute("name", "chatbubble-outline")
@@ -159,12 +161,29 @@ function createCommentCards(parentElement, commentsList) {
     })
 }
 
+async function getPostByiD (id) {
+    const response = await fetch(`https://api-posts.thesigns.com.br/posts/${id}`)
+    const data = await response.json()
+    createCommentsPostModal(data.title, data.author, data.content, data.comments)
+}
+
 function clickComment(iconComment, id) {
     iconComment.addEventListener('click', async () => {
         const modal = document.querySelector(".modal-effect")
         modal.style.display = "block"
-        const response = await fetch(`https://api-posts.thesigns.com.br/posts/${id}`)
-        const data = await response.json()
-        createCommentsPostModal(data.title, data.author, data.content, data.comments)
+        idUser = id
+        getPostByiD (id)
     })
 }
+
+btnSendComment.addEventListener("click", async () => {
+    const txtAreaComment = document.getElementById("ipt-comment")
+    await fetch(`https://api-posts.thesigns.com.br/posts/${idUser}/comments`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({content: txtAreaComment.value})
+        })
+    getPostByiD (idUser)
+})
