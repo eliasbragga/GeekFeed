@@ -47,8 +47,7 @@ function createCard(title, username, content, likes, id, comments) {
     cards.appendChild(divCard)
 
     clickHeart(icon, id, likes, countLikes)
-    clickComment(iconComment)
-    // clickComment(iconComment, modal) //chamar elemento da div modal como parametro.
+    clickComment(iconComment, id)
 }
 async function buscar() {
     const response = await fetch(`https://api-posts.thesigns.com.br/posts`)
@@ -78,104 +77,94 @@ function clickHeart(icon, id, qtdLikes, elementoHTML) {
         }, 800)
     })
 }
-function clickComment(iconComment, modal) {
-    iconComment.addEventListener('click', () => {
+
+function createCommentsPostModal(title, username, content, commentsList) {
+    const postModal = document.querySelector("#container_post")
+    const postComments = document.querySelector("#comments")
+    const postMainTitle = document.getElementById("tittle_post_modal")
+    const closePost = document.getElementById("close-post-modal")
+    const modal = document.querySelector(".modal-effect")
+
+    const postCard = document.createElement("div")
+    const postTittle = document.createElement("h3")
+    const postUser = document.createElement("p")
+    const postContent = document.createElement("p")
+
+    postCard.setAttribute("id", "original-post")
+
+    postTittle.innerText = title
+    postUser.innerText = username
+    postContent.innerText = content
+    postMainTitle.innerText = `Comments: ${title}`
+
+    postCard.appendChild(postTittle)
+    postCard.appendChild(postUser)
+    postCard.appendChild(postContent)
+
+    createCommentCards(postComments, commentsList)
+
+    postModal.appendChild(postCard)
+
+    closePost.addEventListener("click", () => modal.style.display = "none")
+}
+
+function createCommentsPostModal(title, username, content, commentsList) {
+    const postModal = document.querySelector("#container_post")
+    const postComments = document.querySelector("#comments")
+    const postMainTitle = document.getElementById("tittle_post_modal")
+    const closePost = document.getElementById("close-post-modal")
+    const modal = document.querySelector(".modal-effect")
+
+    postModal.innerHTML = ""
+    postComments.innerHTML = ""
+
+    const postCard = document.createElement("div")
+    const postTittle = document.createElement("h3")
+    const postUser = document.createElement("p")
+    const postContent = document.createElement("p")
+
+    postCard.setAttribute("id", "original-post")
+
+    postTittle.innerText = title
+    postUser.innerText = username
+    postContent.innerText = content
+    postMainTitle.innerText = `Comments: ${title}`
+
+    postCard.appendChild(postTittle)
+    postCard.appendChild(postUser)
+    postCard.appendChild(postContent)
+
+    createCommentCards(postComments, commentsList)
+
+    postModal.appendChild(postCard)
+
+    closePost.addEventListener("click", () => modal.style.display = "none")
+}
+
+function createCommentCards(parentElement, commentsList) {
+    commentsList.forEach(comment => {
+        const postCommentCard = document.createElement("div")
+        const postCommentUser = document.createElement("p")
+        const postCommentContent = document.createElement("p")
+
+        postCommentCard.setAttribute("id", "comment-card")
+
+        postCommentUser.innerText = comment.author || comment.username
+        postCommentContent.innerText = comment.content
+
+        postCommentCard.appendChild(postCommentUser)
+        postCommentCard.appendChild(postCommentContent)
+
+        parentElement.appendChild(postCommentCard)
+    })
+}
+
+function clickComment(iconComment, id) {
+    iconComment.addEventListener('click', async () => {
+        const modal = document.querySelector(".modal-effect")
         modal.style.display = "block"
-    })
-}
-
-function createCommentsPostModal(title, username, content, commentsList){
-    const postModal = document.querySelector("#container_post")
-    const postComments = document.querySelector("#comments")
-    const postMainTitle = document.getElementById("tittle_post_modal")
-    const closePost = document.getElementById("close-post-modal")
-    const modal = document.querySelector(".modal-effect")
-    
-    const postCard = document.createElement("div")
-    const postTittle = document.createElement("h3")
-    const postUser = document.createElement("p")
-    const postContent = document.createElement("p")
-    
-    postCard.setAttribute("id", "original-post")
-    
-    postTittle.innerText = title
-    postUser.innerText = username
-    postContent.innerText = content
-    postMainTitle.innerText = `Comments: ${title}`
-    
-    postCard.appendChild(postTittle)
-    postCard.appendChild(postUser)
-    postCard.appendChild(postContent)
-
-    createCommentCards(postComments, commentsList)
-    
-    postModal.appendChild(postCard)
-    
-    closePost.addEventListener("click", () => modal.style.display = "none")
-}
-
-function createCommentCards (parentElement, commentsList){
-    commentsList.forEach( comment => {
-        const postCommentCard = document.createElement("div")
-        const postCommentUser = document.createElement("p")
-        const postCommentContent = document.createElement("p")
-    
-        postCommentCard.setAttribute("id", "comment-card")
-    
-        postCommentUser.innerText = comment.author
-        postCommentContent.innerText = comment.content
-    
-        postCommentCard.appendChild(postCommentUser)
-        postCommentCard.appendChild(postCommentContent)
-    
-        parentElement.appendChild(postCommentCard)
-    })
-}
-
-function createCommentsPostModal(title, username, content, commentsList){
-    const postModal = document.querySelector("#container_post")
-    const postComments = document.querySelector("#comments")
-    const postMainTitle = document.getElementById("tittle_post_modal")
-    const closePost = document.getElementById("close-post-modal")
-    const modal = document.querySelector(".modal-effect")
-    
-    const postCard = document.createElement("div")
-    const postTittle = document.createElement("h3")
-    const postUser = document.createElement("p")
-    const postContent = document.createElement("p")
-    
-    postCard.setAttribute("id", "original-post")
-    
-    postTittle.innerText = title
-    postUser.innerText = username
-    postContent.innerText = content
-    postMainTitle.innerText = `Comments: ${title}`
-    
-    postCard.appendChild(postTittle)
-    postCard.appendChild(postUser)
-    postCard.appendChild(postContent)
-
-    createCommentCards(postComments, commentsList)
-    
-    postModal.appendChild(postCard)
-    
-    closePost.addEventListener("click", () => modal.style.display = "none")
-}
-
-function createCommentCards (parentElement, commentsList){
-    commentsList.forEach( comment => {
-        const postCommentCard = document.createElement("div")
-        const postCommentUser = document.createElement("p")
-        const postCommentContent = document.createElement("p")
-    
-        postCommentCard.setAttribute("id", "comment-card")
-    
-        postCommentUser.innerText = comment.author
-        postCommentContent.innerText = comment.content
-    
-        postCommentCard.appendChild(postCommentUser)
-        postCommentCard.appendChild(postCommentContent)
-    
-        parentElement.appendChild(postCommentCard)
+        const response = await fetch(`https://api-posts.thesigns.com.br/posts/${id}`)
+        const data = await response.json()
+        createCommentsPostModal(data.title, data.author, data.content, data.comments)
     })
 }
