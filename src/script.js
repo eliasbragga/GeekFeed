@@ -1,4 +1,11 @@
 const btnSendComment = document.querySelector(".btn-send-comment")
+const btnNewPost = document.getElementById("btn-open-modal-new-post")
+const closeNewPost = document.getElementById("close-new-post")
+const usernameNewCard = document.getElementById("ipt-username")
+const titleNewPost = document.getElementById("ipt-title")
+const textContentNewPost = document.getElementById("txt-area-content")
+const btnCancelNewPost = document.getElementById("btn-cancel-post")
+const btnSendNewpost = document.getElementById("btn-post-post")
 let idUser = ""
 
 function createCard(title, username, content, likes, id, comments) {
@@ -25,7 +32,6 @@ function createCard(title, username, content, likes, id, comments) {
     icon.setAttribute("name", "heart")
     iconComment.setAttribute("name", "chatbubble-outline")
 
-
     titleCard.innerText = title
     usernameCard.innerText = username
     contentCard.innerText = content
@@ -51,13 +57,13 @@ function createCard(title, username, content, likes, id, comments) {
     clickHeart(icon, id, likes, countLikes)
     clickComment(iconComment, id)
 }
-async function buscar() {
+async function getPost() {
     const response = await fetch(`https://api-posts.thesigns.com.br/posts`)
     const data = await response.json()
     return data
 }
 async function popularLista() {
-    const listas = await buscar()
+    const listas = await getPost()
     listas.forEach(lista => (createCard(lista.title, lista.author, lista.content, lista.likes ?? 0, lista.id, lista.commentCount ?? 0)))
 }
 
@@ -161,7 +167,7 @@ function createCommentCards(parentElement, commentsList) {
     })
 }
 
-async function getPostByiD (id) {
+async function getPostByiD(id) {
     const response = await fetch(`https://api-posts.thesigns.com.br/posts/${id}`)
     const data = await response.json()
     createCommentsPostModal(data.title, data.author, data.content, data.comments)
@@ -172,19 +178,44 @@ function clickComment(iconComment, id) {
         const modal = document.querySelector(".modal-effect")
         modal.style.display = "block"
         idUser = id
-        getPostByiD (id)
+        getPostByiD(id)
     })
 }
 
 btnSendComment.addEventListener("click", async () => {
     const txtAreaComment = document.getElementById("ipt-comment")
     await fetch(`https://api-posts.thesigns.com.br/posts/${idUser}/comments`, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify({content: txtAreaComment.value})
-        })
-    getPostByiD (idUser)
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify({ content: txtAreaComment.value })
+    })
+    getPostByiD(idUser)
     txtAreaComment.value = ""
+})
+
+closeNewPost.addEventListener('click', () => {
+    modalNewPost.style.display = "none"
+})
+
+const modalNewPost = document.querySelector(".modal-effect-new-post")
+btnNewPost.addEventListener('click', () => {
+    modalNewPost.style.display = "block"
+})
+
+btnCancelNewPost.addEventListener("click", () => modalNewPost.style.display = "none")
+
+btnSendNewpost.addEventListener('click', async () => {
+    await fetch(`https://api-posts.thesigns.com.br/posts`, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+            author: ("@" + usernameNewCard.value),
+            title: titleNewPost.value,
+            content: textContentNewPost.value
+        })
+    })
+    modalNewPost.style.display = "none"
+    location.reload()
 })
