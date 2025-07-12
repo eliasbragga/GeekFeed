@@ -16,6 +16,10 @@
     <div>
         <header>
             <h1 class="logo">GeekFeed</h1>
+            <button id="btn-open-modal-new-post">
+                <ion-icon name="add-outline"></ion-icon>
+                New Post
+            </button>
         </header>
 
         <div class="linha"></div>
@@ -37,6 +41,27 @@
                 <button class="btn-send-comment">
                     <ion-icon name="arrow-forward-outline"></ion-icon>
                 </button>
+            </div>
+        </div>
+    </div>
+    <div class="modal-effect-new-post">
+        <div class="container-new-post">
+            <div class="header-new-post">
+                <h2 class="title-header">Create New Post</h2>
+                <span id="close-new-post">x</span>
+            </div>
+            <div class="inner-line-new-post"></div>
+            <div class="inner-container-new-post">
+                <h3>Username</h3>
+                <input id="ipt-username" type="text" placeholder="your_username">
+                <h3>Title</h3>
+                <input id="ipt-title" type="text" placeholder="Post title...">
+                <h3>Content</h3>
+                <textarea id="txt-area-content" placeholder="Write your thoughts..." maxlength="500"></textarea>
+            </div>
+            <div class="btns-new-post">
+                <button id="btn-cancel-post">Cancel</button>
+                <button id="btn-post-post">Post</button>
             </div>
         </div>
     </div>

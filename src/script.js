@@ -186,4 +186,5 @@ btnSendComment.addEventListener("click", async () => {
             body: JSON.stringify({content: txtAreaComment.value})
         })
     getPostByiD (idUser)
+    txtAreaComment.value = ""
 })
