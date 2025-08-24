@@ -1,16 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&family=Roboto+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <title>GeekFeed</title>
 </head>
-<body>
-    <h1 style="color: green">Hello World</h1>
 
+<body>
+    <div>
+        <header>
+            <h1 class="logo">GeekFeed</h1>
+            <button id="btn-open-modal-new-post">
+                <ion-icon name="add-outline"></ion-icon>
+                New Post
+            </button>
+        </header>
+
+        <div class="linha"></div>
+
+        <div class="container_cards"></div>
+    </div>
+    <div class="modal-effect">
+        <div class="post-modal" id="postModal">
+            <div class="header-modal">
+                <h2 id="tittle_post_modal"></h2>
+                <span id="close-post-modal">x</span>
+            </div>
+            <div id="inner-line"></div>
+            <div id="container_post"></div>
+            <div id="comments"></div>
+            <div id="write-comment">
+                <h3>Write a comment</h3>
+                <textarea id="ipt-comment" placeholder="Your comment" maxlength="200"></textarea>
+                <button class="btn-send-comment">
+                    <ion-icon name="arrow-forward-outline"></ion-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="modal-effect-new-post">
+        <div class="container-new-post">
+            <div class="header-new-post">
+                <h2 class="title-header">Create New Post</h2>
+                <span id="close-new-post">x</span>
+            </div>
+            <div class="inner-line-new-post"></div>
+            <div class="inner-container-new-post">
+                <h3>Username</h3>
+                <input id="ipt-username" type="text" placeholder="your_username">
+                <h3>Title</h3>
+                <input id="ipt-title" type="text" placeholder="Post title...">
+                <h3>Content</h3>
+                <textarea id="txt-area-content" placeholder="Write your thoughts..." maxlength="500"></textarea>
+            </div>
+            <div class="btns-new-post">
+                <button id="btn-cancel-post">Cancel</button>
+                <button id="btn-post-post">Post</button>
+            </div>
+        </div>
+    </div>
+
+    
     <script src="script.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
+
 </html>
